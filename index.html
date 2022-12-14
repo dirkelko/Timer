@@ -1,0 +1,36 @@
+<html>
+    <head>  
+        <script src="timer.js"></script>
+        <link rel="stylesheet" href="mystyle.css">
+        <link rel="preconnect" href="https://rsms.me/">
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+           </head>
+    <body>
+        <div class="clockArea">
+            <svg version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                class="clock"
+                viewBox="0 0 1200 1200">
+    
+                <circle id="bgCircle" cx="600" cy="10" r="500" stroke="#303030" fill="transparent" stroke-width="20"/>
+                <circle id="clockCircle" cx="600" cy="10" r="500" stroke="orange" fill="transparent" stroke-width="20"/>
+                <path id="clockPath" d="M 300 100 A 200 200 0 1 0 500 300"
+                    stroke="transparent" fill="transparent" stroke-width="20" stroke-linecap="round"/>
+                <foreignObject x="000" y="320" width="1200" height="600">
+                    <div xmlns="http://www.w3.org/1999/xhtml" class="HtmlIsland"> 
+                        <div id="timer" class="timerText">
+                            00:00
+                        </div>
+                        <div class="buttonArea">
+                            <div id="startButton" class="button">START</div>
+                            <div id="stopButton" class="button">STOP</div>
+                            <div id="resetButton" class="button">RESET</div>
+                        </div>
+                    </div>
+                </foreignObject>
+            </svg>
+
+        </div>
+
+    </body>
+</html>
