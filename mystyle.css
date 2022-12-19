@@ -21,19 +21,31 @@ body {
 }
 
 .timerText{
-    /*outline: solid 1px orange;
-    outline-offset: -1px;*/
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 360px;
-    font-weight: 100;
-    text-align: center;
-    height:360px;
-    margin-top: 0px;
-    margin-right: 0px;
-    font-feature-settings: "tnum";
+  /*outline: solid 1px orange;
+  outline-offset: -1px;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 360px;
+  font-weight: 100;
+  text-align: center;
+  height:360px;
+  margin-top: 0px;
+  margin-right: 0px;
+  font-feature-settings: "tnum";
+}   
+input[type=text] {
+  /*outline: solid 1px orange;
+  outline-offset: -1px;*/
+  background-color: #404040;
+  color: white;
+  font-size: 360px;
+  font-weight: 100;
+  height:360px;
+  margin-top: 0px;
+  margin-right: 0px;
+  font-feature-settings: "tnum";
 }   
 .buttonArea{
     display: flex;

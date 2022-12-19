@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     document.getElementById("bgCircle").setAttribute("r",r);
 
     document.getElementById("timer").innerHTML = timerString(remTime);
+    document.getElementById("inpTime").style.display = "None";
     document.getElementById("timer").style.fontWeight = fontWeight;
 
     document.getElementById('startButton').hidden = false;
@@ -100,6 +101,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     document.getElementById('stopButton').addEventListener("click", function(event){
         stop();
     });
-      
+    /*document.getElementById("timer").addEventListener("click", function(event){
+        document.getElementById("timer").style.display = "None";
+        document.getElementById("inpTime").style.display = "";
+    });*/
 
 }) 
