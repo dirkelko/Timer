@@ -1,5 +1,5 @@
 # Timer
-Simple Time like the iPhone timer built with javascript and css
+Simple Timer like the iPhone timer built with javascript, SVG, and css
 
 duration is steered by the URL parameter _seconds_
 
