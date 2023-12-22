@@ -2,18 +2,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     const queryString = window.location.search
     const urlParams = new URLSearchParams(queryString);
-    const seconds = Number(urlParams.get('seconds'));
+    let aSeconds = urlParams.get('seconds');
+    aSeconds = (!aSeconds)? [600] : aSeconds.split(',');
+    let seconds = Number(aSeconds[0]);
+    //const seconds = Number(urlParams.get('seconds'));
     const fontWeight = Number(urlParams.get('fontWeight'));
+    const bellSingle = new Audio('./BellSingle.mp3');
+    const bellTriple = new Audio('./BellTriple.mp3');
 
     const mX = 600;
     const mY = 10;
     const r = 500;
     const dt = 50; //timer intervall for clock path
-    const milliSeconds = (seconds)? seconds * 1000 : 600000;
+    let milliSeconds = (seconds)? seconds * 1000 : 600000;
 
     let remTime = milliSeconds;
     let isRunnung = false;
     let interval = {};
+    let intervallIndex = 0;
 
     document.getElementById("clockCircle").setAttribute("cx",mX);
     document.getElementById("clockCircle").setAttribute("cy",mY + r);
@@ -43,22 +49,44 @@ document.addEventListener("DOMContentLoaded", function(event) {
             document.getElementById("timer").innerHTML = timerString(remTime);
 
             document.getElementById("clockCircle").setAttribute("stroke","transparent");
-            document.getElementById("clockPath").setAttribute("stroke","orange");
+            document.getElementById("clockPath").setAttribute("stroke",
+                (intervallIndex % 2)? "orange" : "green");
             let alpha = (milliSeconds - remTime)/milliSeconds*2*Math.PI;
             let dx = r * Math.sin(alpha);
             let dy = r * Math.cos(alpha);
             let laf = (remTime > milliSeconds/2)? 1 : 0;
             let sArc = `M ${mX - dx} ${mY + r - dy} A ${r} ${r} 0 ${laf} 0 ${mX} ${mY}`
             document.getElementById("clockPath").setAttribute("d",sArc);
-            if (remTime <= 0) {
+            if (remTime <= 0 && intervallIndex < aSeconds.length-1){
                 //document.body.style.backgroundColor = "red";
+                if (intervallIndex % 2){
+                    bellTriple.play();
+                }else{
+                    bellSingle.play();
+                }
+                document.getElementById("clockPath").setAttribute("stroke","transparent");
+                document.getElementById('startButton').hidden = true;
+                document.getElementById('stopButton').hidden = false;
+                document.getElementById('resetButton').hidden = true;
+                isRunnung = true;
+                //clearInterval(interval);
+                document.getElementById("timer").innerHTML = timerString(0);
+                intervallIndex = intervallIndex + 1;
+                seconds = Number(aSeconds[intervallIndex]);
+                milliSeconds = (seconds)? seconds * 1000 : 0;
+                let remTime = milliSeconds;
+                endTime = Date.now() + remTime;
+
+           }else if (remTime <= 0 && intervallIndex == aSeconds.length-1){
+                //document.body.style.backgroundColor = "red";
+                bellTriple.play();
                 document.getElementById("clockPath").setAttribute("stroke","transparent");
                 document.getElementById('startButton').hidden = true;
                 document.getElementById('stopButton').hidden = true;
                 document.getElementById('resetButton').hidden = false;
                 isRunnung = false;
                 clearInterval(interval);
-                document.getElementById("timer").innerHTML = timerString(0);
+                document.getElementById("timer").innerHTML = timerString(0);                
             }
         }, dt);           
 

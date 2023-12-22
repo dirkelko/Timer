@@ -9,7 +9,7 @@ body {
     display: block;
     height: 100%;
     width: 100%;
-    margin: 0 auto;
+    margin: 50 auto;
 }
 .HtmlIsland{
     /*outline: solid 1px yellow;
@@ -27,8 +27,8 @@ body {
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 360px;
-  font-weight: 100;
+  font-size: 320px;
+  font-weight: 200;
   text-align: center;
   height:360px;
   margin-top: 0px;
