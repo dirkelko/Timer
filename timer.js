@@ -4,11 +4,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const urlParams = new URLSearchParams(queryString);
     let aSeconds = urlParams.get('seconds');
     aSeconds = (!aSeconds)? [600] : aSeconds.split(',');
+    const bIntervalls = (aSeconds.length > 1);
     let seconds = Number(aSeconds[0]);
     //const seconds = Number(urlParams.get('seconds'));
     const fontWeight = Number(urlParams.get('fontWeight'));
-    const bellSingle = new Audio('./BellSingle.mp3');
-    const bellTriple = new Audio('./BellTriple.mp3');
+    const bellSingle = new Audio('./BellSingle.m4a');
+    const bellTriple = new Audio('./BellTriple.m4a');
 
     const mX = 600;
     const mY = 10;
@@ -50,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
             document.getElementById("clockCircle").setAttribute("stroke","transparent");
             document.getElementById("clockPath").setAttribute("stroke",
-                (intervallIndex % 2)? "orange" : "green");
+                (!bIntervalls || intervallIndex % 2)? "orange" : "green");
             let alpha = (milliSeconds - remTime)/milliSeconds*2*Math.PI;
             let dx = r * Math.sin(alpha);
             let dy = r * Math.cos(alpha);
